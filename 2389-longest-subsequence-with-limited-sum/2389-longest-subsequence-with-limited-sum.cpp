@@ -3,7 +3,7 @@ public:
     vector<int> answerQueries(vector<int>& nums, vector<int>& q) {
         sort(nums.begin(),nums.end());
         vector<long long>v;
-        vector<int>vv(q.size(),0);
+        vector<int>vv;
         long long sum=0;
         for(int i=0; i<nums.size(); i++)
         {
@@ -14,13 +14,12 @@ public:
         int n=nums.size();
         for(int i=0; i<q.size(); i++)
         {
-            for(int j=0; j<nums.size(); j++)
-            {
-                if(q[i]>=v[j])
-                    vv[i]=j+1;
-                else
-                    break;
-            }
+            int a=q[i];
+                vector<long long>::iterator it;
+            it=upper_bound(v.begin(),v.end(),a);
+            int b=it-v.begin();
+            vv.push_back(b);
+            
         }
         return vv;
     }
